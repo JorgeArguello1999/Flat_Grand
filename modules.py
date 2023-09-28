@@ -39,7 +39,7 @@ def main(port:str, name_file:str, save=False):
 # Usando PyAutoGUI
 def interface(data):
     pyautogui.write(data)
-    pyautogui.press("down")
+    pyautogui.press("tab")
 
 # Limpiamos los datos
 def clean(data:list):
@@ -78,5 +78,5 @@ if __name__ == "__main__":
         save = False
         name = ""
 
-    # main(port="/dev/ttyUSB0", name_file="temp", save=True)
-    main(port=port, name_file=name, save=save)
+    main(port="/dev/ttyUSB0", name_file="temp", save=True)
+    # main(port=port, name_file=name, save=save)
