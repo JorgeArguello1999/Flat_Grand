@@ -68,4 +68,15 @@ def save_register(data:json, name:str):
     return True
 
 if __name__ == "__main__":
-    main(port="/dev/ttyUSB0", name_file="temp", save=True)
+    # main(port="/dev/ttyUSB0", name_file="temp", save=True)
+    port = str(input("Ingrese el puerto de escucha: "))
+    save = input("Desea registrar la salida?: 1/0")
+    if save == 1:
+        save = True
+        name = str(input("Ingrese el nombre del archivo de salida: "))
+    else:
+        save = False
+        name = ""
+
+    # main(port="/dev/ttyUSB0", name_file="temp", save=True)
+    main(port=port, name_file=name, save=save)
