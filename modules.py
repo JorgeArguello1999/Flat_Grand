@@ -13,8 +13,6 @@ def main(port:str, name_file:str, save=False):
             # Lee datos del puerto serial
             data = ser.readline().decode('utf-8').strip()
             resultados.append(data)
-            # Imprime los datos recibidos
-            print(f'Datos recibidos: {data}')
 
             # Llamada a la intefaz gráfica PyAutoGUI
             if "Gross" in data:
