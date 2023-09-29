@@ -2,9 +2,10 @@ import serial
 import json 
 import pyautogui
 import re 
+import serial.tools.list_ports
 
 # Hilo principal
-def main(port:str, name_file:str, save=False):
+def main(port, name_file:str, save=False):
     resultados = []
     # Configura el puerto serial
     ser = serial.Serial(port, 9600) 
@@ -66,4 +67,12 @@ def save_register(data:json, name:str):
     return True
 
 if __name__ == "__main__":
-    main(port="/dev/ttyUSB0", name_file="temp", save=True)
+    puertos_disponibles = serial.tools.list_ports.comports()
+    
+    for port in puertos_disponibles:
+        try:
+            main(port=port.device, name_file="temp", save=True)
+        except Exception as e:
+            print("No se ha encontrado el dispositivo, conectelo o llamé a servicio Técnico")
+            print(f"{port.device} - {e}")
+        
